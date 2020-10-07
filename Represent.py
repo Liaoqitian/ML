@@ -15,7 +15,7 @@ import json
 import random
 
 # put your API key here
-API_KEY = "AIzaSyDugNQO9vZxbi68BQnReZCd_CeM-cg-WW0"
+API_KEY = ""
 
 CIVIC_URL = "https://www.googleapis.com/civicinfo/v2/representatives"
 GEO_URL = "https://maps.googleapis.com/maps/api/geocode/json"
