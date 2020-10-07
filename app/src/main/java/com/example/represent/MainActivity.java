@@ -24,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText editAddress = (EditText) findViewById(R.id.address_input);
+        final EditText editAddress = (EditText) findViewById(R.id.address_input);
         Button btnCoordinate = (Button) findViewById(R.id.current_location);
-
+        TextView text = new TextView();
         btnCoordinate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                new GetCoordinates.exe
+                new GetCoordinates().execute(editAddress.getText().toString().replace(" ", "+"));
             }
         });
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            String response;
+            String response = "";
             try{
                 String address = strings[0];
                 HttpDataHandler http = new HttpDataHandler();
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            return response;
         }
 
         @Override
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(s);
                 String lat = ((JSONArray) jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry").getJSONObject("location").get("lat").toString();
                 String lng = ((JSONArray) jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry").getJSONObject("location").get("lng").toString();
-                
+                text.setText(String.format("Coordinates : %s / %s", lat, lng));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
