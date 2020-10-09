@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Represent</string>
     <string name="icon">icon</string>
     <string name="appName">Represent!</string>
     <string name="command">Enter Your Address / Zip code</string>
@@ -8,4 +7,5 @@
     <string name="go">Go!</string>
     <string name="currentLocation">Current Location</string>
     <string name="randomLocation">Random Location</string>
+    <string name="congressionalTitle">Congress Representatives in</string>
 </resources>

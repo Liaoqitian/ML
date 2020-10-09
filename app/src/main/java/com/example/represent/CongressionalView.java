@@ -98,4 +98,5 @@ public class CongressionalView extends AppCompatActivity {
 //        String address = LatLngToAddress(gps.get(0), gps.get(1));
 //        representatives(address);
 //    }
+//    }
 }
