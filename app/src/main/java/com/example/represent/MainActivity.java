@@ -31,47 +31,47 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                new GetCoordinates.exe
+
             }
         });
 
     }
 
-    private class GetCoordinates extends AsyncTask<String, Void, String> {
-        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            dialog.setMessage("Please wait...");
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String response;
-            try{
-                String address = strings[0];
-                HttpDataHandler http = new HttpDataHandler();
-                String url = GEO_URL + String.format("?address=%s", address) + "&key=" + API_KEY;
-                response = http.getHTTPData(url);
-                return response;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            try {
-                JSONObject jsonObject = new JSONObject(s);
-                String lat = ((JSONArray) jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry").getJSONObject("location").get("lat").toString();
-                String lng = ((JSONArray) jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry").getJSONObject("location").get("lng").toString();
-                
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    private class GetCoordinates extends AsyncTask<String, Void, String> {
+//        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+//
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            dialog.setMessage("Please wait...");
+//            dialog.setCanceledOnTouchOutside(false);
+//            dialog.show();
+//        }
+//
+//        @Override
+//        protected String doInBackground(String... strings) {
+//            String response;
+//            try{
+//                String address = strings[0];
+//                HttpDataHandler http = new HttpDataHandler();
+//                String url = GEO_URL + String.format("?address=%s", address) + "&key=" + API_KEY;
+//                response = http.getHTTPData(url);
+//                return response;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String s) {
+//            try {
+//                JSONObject jsonObject = new JSONObject(s);
+//                String lat = ((JSONArray) jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry").getJSONObject("location").get("lat").toString();
+//                String lng = ((JSONArray) jsonObject.get("results")).getJSONObject(0).getJSONObject("geometry").getJSONObject("location").get("lng").toString();
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }
